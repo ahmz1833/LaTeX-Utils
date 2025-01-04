@@ -153,6 +153,10 @@ pip install pygments
 
 برای استفاده از تمپلیت ارائه شده، می‌توانید از اسکریپت نصب ارائه شده استفاده کنید. این اسکریپت فایل‌ها را روی سیستم شما در مسیر `~/latex_utils` نصب کرده و فرمان `create-latex` را برای ایجاد پروژه‌های جدید LaTeX ثبت می‌کند.
 
+برای نصب، می‌توانید از دستور زیر استفاده کنید:
+```sh
+curl -o- https://raw.githubusercontent.com/ahmz1833/LaTeX-Utils/refs/heads/master/install.sh | bash
+```
 
 ---
 
