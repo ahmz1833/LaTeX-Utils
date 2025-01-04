@@ -1,0 +1,40 @@
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.fls
+*.xdv
+*.fdb_latexmk
+*.synctex.gz
+*.run.xml
+_minted-*
+
+# Editor backup files
+*~
+*.bak
+*.swp
+*.tmp
+
+# VSCode settings
+.vscode/
+
+# MacOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db

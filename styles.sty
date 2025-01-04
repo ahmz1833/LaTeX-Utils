@@ -1,0 +1,337 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                     Latex Style Utility                      %%
+%%                          BY AHMZ                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[a4paper, top=1.5cm, bottom=2.5cm, left=1.5cm, right=1.5cm]{geometry}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[svgnames]{xcolor} 
+\usepackage{fancyhdr}
+\usepackage{tocloft}
+\usepackage[colorlinks,linkcolor=blue,urlcolor=blue,citecolor=blue,filecolor=blue,anchorcolor=blue]{hyperref}
+\usepackage{enumitem}
+\usepackage[many]{tcolorbox}
+\usepackage{minted}
+\usepackage{afterpage}
+\usepackage{amssymb}
+\usepackage{pdflscape}
+\usepackage{textcomp}
+\usepackage{xecolor}
+\usepackage{rotating}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+\usepackage{PTSerif} 
+\usepackage{seqsplit}
+\usepackage{changepage}
+\usepackage{lastpage}
+\usepackage{sectsty}
+\usepackage{everypage}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{xepersian}
+\usetikzlibrary{backgrounds}
+
+% Command to add border to the page (arguments: border color, border width, inner color, inner width)
+\newcommand{\addborder}[4]{
+	\AddEverypageHook{
+        \begin{tikzpicture}[remember picture, overlay]
+            \draw[#1, #2] 
+                ([xshift=1cm, yshift=-1cm]current page.north west) 
+                rectangle 
+                ([xshift=-1cm, yshift=1cm]current page.south east);
+            \draw[#3, #4] 
+                ([xshift=1.06cm, yshift=-1.06cm]current page.north west) 
+                rectangle 
+                ([xshift=-1.06cm, yshift=1.06cm]current page.south east);
+        \end{tikzpicture}
+    }
+}
+
+
+% Command to insert a link in the document
+\newcommand{\link}[2]{\href{#1}{\textcolor{blue}{#2}}}
+
+\newcommand{\mkoutline}[4][blue]{
+    \begin{tikzpicture}[baseline=(text.base)]
+        \node[anchor=base, text=#2, draw=#1, line width=#3, inner sep=0pt, outer sep=0pt] (text) {#4};
+    \end{tikzpicture}
+}
+
+\newcommand{\mkshadowtxt}[5][gray]{
+    \begin{tikzpicture}[baseline=(text.base)]
+        \node[anchor=base, text=#1, shift={(#2, #3)}, scale=#4, inner sep=0pt, outer sep=0pt] at (0, 0) {#5};
+        \node[anchor=base, inner sep=0pt, outer sep=0pt] (text) at (0, 0) {#5};
+    \end{tikzpicture}
+}
+
+\newcommand{\mkshadow}[5][gray]{
+    \begin{tikzpicture}[baseline=(text.base)]
+        \node[anchor=base, fill=#1, shift={(#2, #3)}, scale=#4, inner sep=0pt, outer sep=0pt] at (0, 0) {\phantom{#5}};
+        \node[anchor=base, inner sep=0pt, outer sep=0pt] (text) at (0, 0) {#5};
+    \end{tikzpicture}
+}
+
+%=================== Lengths ===================%
+\setlist{itemsep=1pt}
+\linespread{1.6}                             % فاصله بین خطوط
+\setlength\parindent{1.5em}                  % تورفتگی متن
+\setlength\parskip{.8em}                     % فاصله بین پاراگراف‌ها
+
+
+\newcommand\configHeader[3]{
+    \pagestyle{fancy}
+    \fancyhf{}
+    \fancyhead[R]{\textbf{\textcolor{#1}{#3}}}
+    \fancyhead[C]{\textcolor{accent}{\small صفحهٔ \ \ \textbf{\large \thepage} \  از \ {\large \pageref*{LastPage}}}}
+    \fancyhead[L]{\textbf{\textcolor{#1}{#2}}}
+    \renewcommand{\headrulewidth}{0.5pt} % خط زیر هدر
+    \setlength{\footnotesep}{0.75\baselineskip}
+    \setlength{\skip\footins}{1.2pc plus 5pt}
+    \setlength{\headheight}{6.2em} % ارتفاع هدر
+    \setlength{\headsep}{0cm}
+    \renewcommand{\headrule}{
+        \vspace{-1.5mm}
+        \hbox to\headwidth{
+            \color{#1}\leaders\hrule height \headrulewidth\hfill%
+        }
+    }
+}
+
+\newcommand{\coverpageahmz}[7]{
+    \thispagestyle{empty}
+
+    \begin{tikzpicture}[remember picture, overlay]
+        \draw[ultra thick, accentbg] ([xshift=1cm, yshift=3cm]current page.south west) -- ++(7cm, -2cm);
+        \draw[ultra thick, accentlight] ([xshift=1cm, yshift=4.5cm]current page.south west) -- ++(6cm, -3.5cm);
+        \draw[ultra thick, accentlightgray] ([xshift=1cm, yshift=6cm]current page.south west) -- ++(5cm, -5cm);
+        \draw[ultra thick, accent] ([xshift=1cm, yshift=8cm]current page.south west) -- ++(4cm, -7cm);
+        \draw[ultra thick, accent] ([xshift=1cm, yshift=10cm]current page.south west) -- ++(3cm, -9cm);
+        \draw[ultra thick, accentdark] ([xshift=1cm, yshift=12cm]current page.south west) -- ++(2cm, -11cm);
+        \draw[ultra thick, accenttext] ([xshift=1cm, yshift=14cm]current page.south west) -- ++(1cm, -13cm);
+
+        \fill[accentgray] 
+            ([xshift=1cm, yshift=-1cm]current page.north west) 
+            rectangle 
+            ([xshift=1.6cm, yshift=1cm]current page.south west);
+
+        \node[anchor=north west, xshift=1.7cm, yshift=-1.7cm] at (current page.north west) {
+            \begin{minipage}{0.25\textwidth}
+                \begin{center}
+                    \includegraphics[width=3cm]{utils/sharif.png}\\
+                    % \vspace{.5em}
+                    \RL{دانشگاه صنعتی شریف}\\
+                    % \vspace{.5em}
+                    \RL{دانشکده مهندسی کامپیوتر}
+                \end{center}
+            \end{minipage}
+        };
+
+        \node[anchor=north, yshift=-2cm] at (current page.north) {
+            \RL{\fontRay{{«به‌نام خدا»}}}
+        };
+        
+        % تاریخ (فلش آبی رنگ)
+        \node[anchor=north west, xshift=0.9cm, yshift=-6.5cm] at (current page.north west) {
+            \begin{tikzpicture}
+                \fill[accent] (0, 0) -- (4.5, 0) -- (5, -0.5) -- (4.5, -1) -- (0, -1) -- cycle;
+                \node[anchor=center, text=white] at (2.7, -0.5) {
+                    \begin{minipage}{0.25\textwidth}\begin{center}
+                        \RL{\large{#2}}
+                    \end{center}\end{minipage}
+                };
+            \end{tikzpicture}
+        };
+
+        % عنوان در وسط صفحه
+        \node[anchor=north, yshift=-6.3cm, scale=1.3] at (current page.north) {
+            \mkshadowtxt[accentlightgray]{0.05}{-0.08}{1}{\Huge \textbf{#1}}
+        };
+
+        % توضیحات زیر عنوان
+        \node[anchor=north, yshift=-8cm] at (current page.north) {
+            % \mkshadowtxt[accentlightgray]{0.04}{-0.04}{1}{
+            \RL{\Large{
+                \begin{minipage}{0.5\textwidth}\centering{
+                    \vspace{0.5cm}
+                    درس #3\\
+                    استاد: #4\\
+                    \large نیم‌سال #5
+                }\end{minipage}
+            }}
+            % }
+        };
+
+        % تصویر وسط صفحه
+        \node[anchor=center, yshift=-2cm] at (current page.center) {
+            \begin{minipage}{\textwidth}\centering\RL{
+                #7
+            }\end{minipage}
+        };
+
+        % نام و شماره دانشجویی پایین
+        \node[anchor=south, yshift=5cm, scale=1.4] at (current page.south) {
+            \RL{\begin{minipage}{0.5\textwidth}\centering{
+                \textcolor{accenttext}{#6}
+            }\end{minipage}}
+        };
+    \end{tikzpicture}
+}
+
+\newcommand{\wnalpha}[1]{%
+    \ifcase#1\or 
+        اول\or 
+        دوم\or 
+        سوم\or 
+        چهارم\or 
+        پنجم\or 
+        ششم\or 
+        هفتم\or 
+        هشتم\or 
+        نهم\or 
+        دهم\or 
+        یازدهم\or 
+        دوازدهم\or 
+        سیزدهم\or 
+        چهاردهم\or 
+        پانزدهم\or 
+        شانزدهم\or 
+        هفدهم\or 
+        هجدهم\or 
+        نوزدهم\or 
+        بیستم\or 
+        بیست و یکم\or 
+        بیست و دوم\or 
+        بیست و سوم\or 
+        بیست و چهارم\or 
+        بیست و پنجم\or 
+        بیست و ششم\or 
+        بیست و هفتم\or 
+        بیست و هشتم\or 
+        بیست و نهم\or 
+        سی‌ام\or 
+        سی و یکم\or 
+        سی و دوم\or 
+        سی و سوم\or 
+        سی و چهارم\or 
+        سی و پنجم\or 
+        سی و ششم\or 
+        سی و هفتم\or 
+        سی و هشتم\or 
+        سی و نهم\or 
+        چهلم\or 
+        چهل و یکم\or 
+        چهل و دوم\or 
+        چهل و سوم\or 
+        چهل و چهارم\or 
+        چهل و پنجم\or 
+        چهل و ششم\or 
+        چهل و هفتم\or 
+        چهل و هشتم\or 
+        چهل و نهم\or 
+        پنجاهم\else 
+        \number#1\fi
+}
+
+\newcommand{\wnalph}[1]{%
+    \ifcase#1\or 
+        یک\or 
+        دو\or 
+        سه\or 
+        چهار\or 
+        پنج\or 
+        شش\or 
+        هفت\or 
+        هشت\or 
+        نه\or 
+        ده\or 
+        یازده\or 
+        دوازده\or 
+        سیزده\or 
+        چهارده\or 
+        پانزده\or 
+        شانزده\or 
+        هفده\or 
+        هجده\or 
+        نوزده\or 
+        بیست\or 
+        بیست و یک\or 
+        بیست و دو\or 
+        بیست و سه\or 
+        بیست و چهار\or 
+        بیست و پنج\or 
+        بیست و شش\or 
+        بیست و هفت\or 
+        بیست و هشت\or 
+        بیست و نه\or 
+        سی\or 
+        سی و یک\or 
+        سی و دو\or 
+        سی و سه\or 
+        سی و چهار\or 
+        سی و پنج\or 
+        سی و شش\or 
+        سی و هفت\or 
+        سی و هشت\or 
+        سی و نه\or 
+        چهل\or 
+        چهل و یک\or 
+        چهل و دو\or 
+        چهل و سه\or 
+        چهل و چهار\or 
+        چهل و پنج\or 
+        چهل و شش\or 
+        چهل و هفت\or 
+        چهل و هشت\or 
+        چهل و نه\or 
+        پنجاه\else 
+        \number#1\fi
+}
+
+%%%%%%%%%% Minted Configurations %%%%%%%%%%
+% https://tug.ctan.org/macros/latex/contrib/minted/minted.pdf
+% https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
+% For more styles: https://pygments.org/styles/
+
+% Redefine the Line Numbering Style
+\renewcommand{\theFancyVerbLine}{
+    \ttfamily{\scriptsize\textcolor{\linenocolor}{\oldstylenums{\arabic{FancyVerbLine}}}}\hspace{-1em}
+}
+\newcommand{\linenocolor}{black}
+\tcbuselibrary{minted,breakable,xparse,skins}
+\newcommand{\codeblockfile}[6]{
+    \begin{spacing}{1.05}
+    \begin{latin}
+        \renewcommand{\linenocolor}{#5}
+        \begin{tcolorbox}[
+            listing only,
+            enforce breakable,
+            enhanced,
+            sharp corners,
+            boxrule=0.5pt,
+            colframe=#4,
+            colback=#4,
+            coltitle=#5,
+            left=1.5em,
+            top=-0.6em,
+            bottom=-1.85em,
+            right=0pt,
+            boxsep=0pt,
+            width=\linewidth,
+            title=#6
+        ]
+            \inputminted[
+                xleftmargin=0.3em,
+                autogobble=true,
+                numbers=left,
+                numbersep=1em,
+                tabsize=4,
+                baselinestretch=1.1,
+                fontsize=\footnotesize,
+                breaklines=true,
+                #3
+            ]{#1}{#2}
+        \end{tcolorbox}
+    \end{latin}
+    \end{spacing}
+}
