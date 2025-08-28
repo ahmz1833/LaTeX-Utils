@@ -4,6 +4,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[a4paper, top=1.5cm, bottom=2.5cm, left=1.5cm, right=1.5cm]{geometry}
 \usepackage{float}
+\usepackage{ulem}
+\usepackage{svg}
 \usepackage{graphicx}
 \usepackage[svgnames]{xcolor} 
 \usepackage{fancyhdr}
@@ -18,6 +20,7 @@
 \usepackage{textcomp}
 \usepackage{xecolor}
 \usepackage{rotating}
+\usepackage{fontspec}
 \usepackage[T1]{fontenc}
 \usepackage{tikz}
 \usepackage[utf8]{inputenc}
@@ -72,6 +75,9 @@
     \end{tikzpicture}
 }
 
+\newcommand{\mkline}[2]{
+    \noindent\makebox[\linewidth]{\textcolor{#2}{\rule{\linewidth}{#1}}}
+}
 %=================== Lengths ===================%
 \setlist{itemsep=1pt}
 \linespread{1.6}                             % فاصله بین خطوط
@@ -313,8 +319,8 @@
             colback=#4,
             coltitle=#5,
             left=1.5em,
-            top=-0.6em,
-            bottom=-1.85em,
+            top=0em,
+            bottom=0em,
             right=0pt,
             boxsep=0pt,
             width=\linewidth,
@@ -326,6 +332,7 @@
                 numbers=left,
                 numbersep=1em,
                 tabsize=4,
+                bgcolorpadding=0.3em,
                 baselinestretch=1.1,
                 fontsize=\footnotesize,
                 breaklines=true,

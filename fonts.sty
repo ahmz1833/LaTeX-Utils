@@ -167,13 +167,13 @@
 }
 
 %%%%%%%%%%%%%%% Sharif 1.2 Font
-\defpersianfont{\fontSharif}[Path=utils/fa/,BoldFont={Sharif1.2-Bold.ttf}]{Sharif1.2-Regular.ttf}
-\defpersianfont{\fontSharifLight}[Path=utils/fa/]{Sharif1.2-Light.ttf}
-\defpersianfont{\fontSharifMedium}[Path=utils/fa/]{Sharif1.2-Medium.ttf}
-\defpersianfont{\fontSharifSemibold}[Path=utils/fa/]{Sharif1.2-SemiBold.ttf}
-\defpersianfont{\fontSharifBlack}[Path=utils/fa/]{Sharif1.2-Black.ttf}
+\defpersianfont{\fontSharif}[Scale=1.4,Path=utils/fa/,BoldFont={Sharif1.2-Bold.ttf}]{Sharif1.2-Regular.ttf}
+\defpersianfont{\fontSharifLight}[Scale=1.4,Path=utils/fa/]{Sharif1.2-Light.ttf}
+\defpersianfont{\fontSharifMedium}[Scale=1.4,Path=utils/fa/]{Sharif1.2-Medium.ttf}
+\defpersianfont{\fontSharifSemibold}[Scale=1.4,Path=utils/fa/]{Sharif1.2-SemiBold.ttf}
+\defpersianfont{\fontSharifBlack}[Scale=1.4,Path=utils/fa/]{Sharif1.2-Black.ttf}
 \newcommand{\fontSharifAsDefault}{
-	\settextfont[Path=utils/fa/,BoldFont={Sharif1.2-Bold.ttf}]{Sharif1.2-Regular.ttf}
+	\settextfont[Scale=1.4,Path=utils/fa/,BoldFont={Sharif1.2-Bold.ttf}]{Sharif1.2-Regular.ttf}
 	\newcommand\textlt{\fontSharifLight}
 	\newcommand\textmi{\fontSharifMedium}
 	\newcommand\textsb{\fontSharifSemibold}
@@ -280,3 +280,7 @@
 \newcommand{\fontSpaceMonoAsLatin}{
 	\setlatintextfont[Path=utils/mono/,BoldFont={SpaceMonoNerdFontMono-Bold.ttf},ItalicFont={SpaceMonoNerdFontMono-Italic.ttf}]{SpaceMonoNerdFontMono-Regular.ttf}
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Emoji Fonts %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% Noto Color Emoji Font
+\newfontfamily\symbolafont[Path=utils/emoji/]{Symbola.ttf}
